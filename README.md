@@ -2,7 +2,9 @@
 
 Digital, privacy-preserving driving license test for rented stand-up electric scooters (e-scooters).
 
-*🚧 Note: Scooter License is a WIP research project. This repository contains a proof-of-concept implementation.*
+Why a digital license? Some cities are worried about safety concerns of e-scooters and e-scooter providers want to build trust. A traditional driving license is quite costly and most likely superfluous.
+
+*🚧 Note: Scooter License is a vibe-coded proof-of-concept prototype and provides no real driving license functionality!*
 
 ![](./docs/img/banner.png)
 
@@ -28,13 +30,31 @@ flowchart TD
     SLA[Scooter License App] -->|theory test result| SL
 ```
 
+Alternative: Users with a valid car or motorcycle license are automatically granted an e-scooter operator license, as they have already demonstrated road safety knowledge.
+
 ## Who demands the Scooter License?
 
 There are two possible ways the Scooter License may be used:
 
 1. Providers may require it to increase public trust in e-scooters and encourage wider adoption.
-2. Cities may enforce it as part of local traffic regulations (e.g., to reduce accidents or sidewalk riding).
+2. Cities may enforce it as part of local traffic regulations (e.g., to reduce accidents or sidewalk riding). Demanding a license is better than banning e-scooters completely.
 
-Risk: A mandatory license may reduce e-scooter adoption by making them less attractive to casual users.
+Risk: A mandatory license may reduce e-scooter adoption by making them less attractive to casual users, harming mobility transition.
 
-Alternative: Users with a valid car or motorcycle license are automatically granted an e-scooter operator license, as they have already demonstrated road safety knowledge.
+## Development
+
+The proof of concept is a frontend-only [Next.js](https://nextjs.org) app. It is built as a static export, with no backend.
+
+- `/`: introduction
+- `/apply`: wizard with dummy personal details, a simulated eID check and the theory test
+- `/license`: digital license card with QR code, plus buttons that simulate rides for the practical test
+- `/integration`: plan for how providers, eID and authorities could integrate (not implemented)
+
+All data is dummy data, stored only in the browser's `localStorage`. The app doesn't contact any authority or e-scooter provider.
+
+```bash
+npm install
+npm run dev     # dev server at http://localhost:3000
+npm run build   # static export to ./out
+npm run lint
+```
